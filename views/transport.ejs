@@ -1,0 +1,26 @@
+<h1></h1>
+
+<% include partials/header %>
+
+
+<div class="container">
+        <div class="row text-center" style="display:flex ; flex-wrap : wrap ;">
+               <% user.forEach(function(i){ %>
+                <div class="col-md-4">
+                        <div>
+                                <% var n = i.images.length %>
+                            <img src="uploads/<%= i.images[n-1]%>" alt="" height="200px" width="200px">
+                            <div class="caption">
+                                    <h4> <%= i.filename %>  </h4>
+                            </div>
+                        </div>
+                    <p>
+                        <li>bfuijeak</li>
+                    </p>
+                </div>
+                <% }); %>
+        </div>
+</div>
+
+
+<% include partials/footer %>

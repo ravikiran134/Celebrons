@@ -1,0 +1,82 @@
+<% include partials/header %>
+<style>
+    .bgcolor{
+        background-color: teal
+    }
+    .btn.btn-primary {
+    background: #33b335;
+    border: 0 none;
+    border-radius: 0;
+    margin-top: 16px;
+}
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 my-back bgcolor">
+            <h3 class="myFont long-line down-space">Profile Information</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="myFont" > Name :</p>
+                    <p class="myFont">Email  :</p>   
+                    <p class="myFont">Mobile :</p>
+                    <p class="myFont">Location :</p>
+                    <p class="myFont">ServiceType :</p>
+                </div>
+                <div class="col-md-4">
+                    <p class="myFont"><%= user.owner[0].name %></p>
+                    <p class="myFont"><%= user.email %></p>   
+                    <p class="myFont"><%= user.owner[0].phno  %></p>
+                    <p class="myFont"><%= user.owner[0].location%></p>
+                    <p class="myFont"><%= user.owner[0].servtype%></p>    
+                </div>
+            </div>
+
+            <a class="btn btn-primary" href="/owner/<%= user.owner[0]._id %>/edit" >Update</a><br><br>
+            <form action="/image/<%= user._id %>/edit" method="POST" enctype="multipart/form-data">
+                <input type="file" name="myImage"><br>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+                <a href="/image/<%= user._id %>/edit " class="btn btn-primary">View My Images </a><br><br><br>
+                <a href="/viewCustomers/<%= user.owner[0].email %>" class="btn btn-primary">View My Customers </a><br><br>
+        </div>
+
+        <div class="col-md-2 my-back">
+            
+            
+            
+        </div>
+        <div class="col-md-5 my-back bgcolor">
+            <h3 class="myFont long-line down-space">Service Information</h3>
+            <div class="row">
+                
+                <div class="col-md-4">
+                    <p class="myFont" > Name :</p>
+                    <p class="myFont">Email  :</p>   
+                    <p class="myFont">Address :</p>
+                    <p class="myFont">Cost :</p>
+                    <p class="myFont">Capacity :</p>
+                    <p class="myFont">Desc :</p>
+                    <p class="myFont">Avaliability :</p>
+                    <p class="myFont">Reviews :</p>
+                </div>
+                <div class="col-md-4">
+                    
+                        <p class="myFont"><%= user.name %></p>
+                        <p class="myFont"><%= user.email %></p>
+                        <p class="myFont"><%= user.location %></p>
+                        <p class="myFont"><%= user.cost %></p>
+                        <p class="myFont"><%= user.capacity %></p>
+                        <p class="myFont"><%= user.Desc %></p>
+                        <p class="myFont"><%= user.Avaliability %></p>
+                        <p class="myFont"><%= user.Reviews %></p>      
+                </div>
+            </div>
+            <a class="btn btn-primary" href="/hall/<%= user.owner[0].servtype %>/<%= user._id %>/edit ">Update</a><br><br>
+        </div>
+            
+    </div>
+        
+
+</div>
+<% include partials/footer %>

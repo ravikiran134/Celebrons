@@ -1,0 +1,177 @@
+<head>
+    <title >
+        ClickForServe
+    </title> 
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <link href="css\font-awesome.min.css" rel="stylesheet">
+    <link href="css\prettyPhoto.css" rel="stylesheet">
+    <link href="css\price-range.css" rel="stylesheet">
+    <link href="css\animate.css" rel="stylesheet">
+    <link href="css\main.css" rel="stylesheet">
+    <link href="css\responsive.css" rel="stylesheet">
+
+    
+    <style>
+      .left-side {
+                    min-height: 90vh;
+                    background:  url(images/home/tenthouse.jpg)  ;
+                    background-size: cover;
+                }
+      .navbar-custom{
+                    background-color:teal;
+                    position:relative;
+      }
+      .myFont{
+                color: #fff;
+      }
+      .navbar-default .navbar-nav>li>a {
+            color: #fcf8e3;
+      }
+      .navbar-default .navbar-brand {
+            color: #fcf8e3;
+      }
+      .btn.btn-primary {
+	background: #008080;
+	border: 0 none;
+	border-radius: 0;
+	margin-top: 16px;
+    }
+
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-custom">
+    <div class="container-fluid">
+        <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar white"></span>
+                      <span class="icon-bar white"></span>
+                      <span class="icon-bar white"></span>
+                    </button>
+                    <a  href="/" class="navbar-brand myFont"><i class="fas fa-building"></i> ClickForServe</a>
+        </div>
+        <div class="collapse navbar-collapse myFont" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a  href="/" class=""><i class="fas fa-home"></i> Home</a></li>
+                <li><a  href="/services" class=""><i class="fas fa-search"></i> Services</a></li>
+                <% if(!currentUser){ %>
+                    <li><a  href="/login" class=""><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                    <li><a  href="/signUp" class=""><i class="fas fa-external-link-alt"></i> SignUp</a></li>
+                <% }else{ %>
+                    <li><a  href="#" class="">Logged In as : <i class="fas fa-user-circle"></i> <%= currentUser.username %></a></li>
+                    <% if(currentUser.type == "O"){ %>
+                        <li><a  href="/owner" class=""><i class="fas fa-user"></i> Owner Profile</a></li>
+                        <% }else{ %>
+                            <li><a  href="#" class=""><i class="fas fa-user"></i> Profile</a></li>
+                        <% } %>
+                    <li><a  href="/logout" class=""><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                <% } %>
+                
+               
+            </ul>
+        </div>
+    </div>
+</nav>
+<head>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <% for(var i=0; i < hall.images.length ; i++) { %>    
+                            <li data-target="#myCarousel" data-slide-to="<%= i %>"></li>
+                            <% } %>   
+                        </ol>
+                        <!-- Wrapper for slides -->	
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img src="/uploads/transport/<%= hall.images[0].filename %>" alt="1" style="width:100%; height:400px">
+                            </div>
+                            <% if ( hall.images.length > 1 )  { %>
+                                <% for(var i = 1 ; i < hall.images.length  ; i++) { %>
+                                    <div class="item">
+                                        <img src="/uploads/transport/<%= hall.images[i].filename %>" alt="2" style="width:100%; height:400px">
+                                    </div>
+                                <% } %>  
+                            <% } %>
+                        </div>
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div> <!--carosel end-->
+                </div> <!--column end-->
+            </div> <!--row <end--><br>
+            <div class="row">
+                <div class="col-sm-6">	
+                        <h3 class=""><%= hall.location %></h3>   
+                        <p class="">Cost : ₹<%= hall.cost %> per day </p>
+                        <p class="">Capacity : <%= hall.capacity %> people </p>      
+                </div>
+                <div class="col-sm-6">	
+                    <a href="/book/<%= hall.email %>/<%= hall.name %>/view" class="btn btn-primary butSize pull-right">Book Now</a>
+
+                </div>
+        </div>
+        </div> <!--column md 7 end-->
+        <div class="col-sm-5">
+				<h3><u >Description</u></h3>
+				<p >
+                        <%= hall.Desc %>
+                </p>
+                <h3><u >Supported Events</u></h3>
+                <p >
+                        <%= hall.Events %>
+                </p>
+                <h3><u >Address</u></h3>
+                <p >
+                        <%= hall.Address %>
+                </p>
+               
+                <h3><u >Contact Mail</u></h3>
+                <p >
+                        <%= hall.email %>
+                </p>
+               
+        </div>
+    </div> <!--row end-->
+
+</div>
+<footer class="container-fluid text-center footer">
+        <p style="font-size:20px; color:green">View the map</p>
+      <div style="width: 100%">
+      <iframe width="100%" height="220px" src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=tadepalligudem+(Map)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+      <a href="https://www.maps.ie/create-google-map/">Google Maps iframe generator</a></iframe></div><br />  
+      
+    </footer>   
+    <!-- <h1><%= hall %></h1> -->
+    <ol>
+        <li><%= hall.name %></li>
+        <li><%= hall.email %></li>
+        <li><%= hall.location %></li>
+        <li><%= hall.Address %></li>
+        <li><%= hall.cost %></li>
+        <li><%= hall.capacity %></li>
+        <li><%= hall.Desc %></li>
+        <li><%= hall.Availability %></li>
+        <li><%= hall.Reviews %></li>
+        <li><%= hall.Events %></li>
+    </ol>
+<% include partials/footer %>

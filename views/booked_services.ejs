@@ -1,0 +1,36 @@
+<% include partials/header %>
+<h1>This is Profile</h1>
+<style>
+    .bgcolor{
+        background-color: teal;
+        color: white;
+    }
+</style>
+<% data.forEach(function(i){ %>
+    <div class="container">
+    <div class="row ">
+        <div class="col-md-4 bgcolor">
+            
+            <p class="myFont">Owner Email  :</p>  
+            <p class="myFont">Service Type :</p> 
+            <p class="myFont">No of Passengers :</p>
+            <p class="myFont">From Date :</p>
+            <p class="myFont">No of Days :</p>
+            <p class="myFont">Ammount :</p>
+        </div>
+        <div class="col-md-1">
+    
+        </div>
+        <div class="col-md-4 bgcolor">
+            <p class="myFont"><%= i.owner %></p>
+            <p class="myFont"><%= i.type %></p>
+            <p class="myFont"><%= i.NoOfPassengers %></p>
+            <p class="myFont"><%= i.FromDate %></p>
+            <p class="myFont"><%= i.NumOfDays %></p>
+                
+        </div>
+    </div><br><br><br>
+</div>
+    <% }); %>
+
+<% include partials/footer %>

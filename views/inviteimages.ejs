@@ -1,0 +1,48 @@
+
+<% include partials/header %>
+<style>
+	.btn.btn-primary {
+	background: #008080;
+	border: 0 none;
+	border-radius: 0;
+	margin-top: 16px;
+    }
+</style>
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-3">
+    <header class="jumbotron"> 
+        <p class="myFont">Search Service Providers</p>
+        <p>
+                <div class="form-inline">
+                        <form action="/tenthousesearch" method="GET">
+                                <div>
+                                        <input type="text" name="search" placeholder="Search Services by Location or Name" class="form-control">
+                                        <input type="submit" value="search" class="btn btn-primary">
+                                </div>
+                        </form>
+                </div>
+        </p>
+    </header>
+</div>
+<div class="row text-center" style="display:flex ; flex-wrap : wrap ;">
+    <% invitation.forEach(function(i){ %>
+        <% var n = i.images.length %>
+    <div class="col-md-3 col-sm-6">
+        <div class="thumbnail">
+                <img src="/uploads/transport/<%= i.images[n-1].filename %>">
+                <div class="caption">
+                        <h4> <%= i.name %>  &nbsp&nbsp <%= i.location %></h4>
+                </div>
+        </div>
+        <p>
+            <a href="/invitation/<%= i._id %>/view" class="btn btn-primary"><i class="fas fa-chevron-circle-down"></i> View More </a>
+        </p>
+    </div>
+    <% }); %>
+</div>
+</div>
+</div>
+
+
+<% include partials/footer %>

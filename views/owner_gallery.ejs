@@ -1,0 +1,16 @@
+<% include partials/header %>
+
+    <!-- <h1><%= halls %></h1> -->
+    
+    <!-- <h1>Name : <%= halls.name %></h1> -->
+    <!-- <% for(var i=0; i<halls.images.length; i++) { %>
+        <h2><%= halls.images[i].filename %></h2>
+    <% } %> -->
+    <% var n = halls.images.length %>
+    <% for(var i=0; i < n; i++) { %>
+        <h2><%= halls.images[i].filename %></h2>
+        <img src="/uploads/transport/<%= halls.images[i].filename %>" alt="" class="img-responsive" width="400px" height="400px">
+    <% } %>
+    
+    
+<% include partials/footer %>

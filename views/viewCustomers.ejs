@@ -1,0 +1,39 @@
+<% include partials/header %>
+<style>
+    .bgcolor{
+        background-color: teal;
+        color: white;
+    }
+</style>
+<h1>My Customers</h1><br><br>
+<% data.forEach(function(i){ %>
+    <div class="container">
+<div class="row ">
+    <div class="col-md-4 bgcolor">
+        
+        <p class="myFont">Customer Email  :</p>  
+        <p class="myFont">Type :</p> 
+        <p class="myFont">No of Passengers :</p>
+        <p class="myFont">From Date :</p>
+        <p class="myFont">No of Days :</p>
+    </div>
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-4 bgcolor">
+        <p class="myFont"><%= i.customer %></p>
+        <p class="myFont"><%= i.type %></p>
+        <p class="myFont"><%= i.NoOfPassengers %></p>
+        <p class="myFont"><%= i.FromDate %></p>
+        <p class="myFont"><%= i.NumOfDays %></p>
+            
+    </div>
+    <div class="col-md-1">
+
+    </div>
+    <a href="/transport/<%= i._id %>/view" class="btn btn-primary bgcolor"><i class="fas fa-chevron-circle-down"></i> View More </a>
+</div>
+
+</div>
+<% }); %>
+<% include partials/footer %>

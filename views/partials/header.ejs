@@ -1,0 +1,92 @@
+<html>
+    <head>
+            <title >
+                ClickForServe
+            </title> 
+            <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <link rel="stylesheet" type="text/css" href="../style.css">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+            <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+            <link href="css\font-awesome.min.css" rel="stylesheet">
+            <link href="css\prettyPhoto.css" rel="stylesheet">
+            <link href="css\price-range.css" rel="stylesheet">
+            <link href="css\animate.css" rel="stylesheet">
+            <link href="css\main.css" rel="stylesheet">
+            <link href="css\responsive.css" rel="stylesheet">
+
+            
+            <style>
+              .left-side {
+                            min-height: 90vh;
+                            background:  url(images/home/tenthouse.jpg)  ;
+                            background-size: cover;
+                        }
+              .navbar-custom{
+                            background-color:teal;
+                            position:relative;
+              }
+              .navbar{
+                            overflow: hidden;
+              }
+              .navbar-fixed-top{
+                  position: fixed;
+              }
+
+              
+            </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                              <span class="sr-only">Toggle navigation</span>
+                              <span class="icon-bar white"></span>
+                              <span class="icon-bar white"></span>
+                              <span class="icon-bar white"></span>
+                            </button>
+                            <a href="/" class="navbar-brand myFont"> ClickForServe</a>
+                </div>
+                <div class="collapse navbar-collapse myFont" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/" class=""><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="/services" class=""><i class="fas fa-search"></i> Services</a></li>
+                        <% if(!currentUser){ %>
+                            <li><a href="/login" class=""><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                            <li><a href="/signUp" class=""><i class="fas fa-external-link-alt"></i> SignUp</a></li>
+                        <% }else{ %>
+                            <li><a href="#" class="">Logged In as : <i class="fas fa-user-circle"></i> <%= currentUser.username %></a></li>
+                            <% if(currentUser.type == "O"){ %>
+                                <li><a href="/owner" class=""><i class="fas fa-user"></i> Owner Profile</a></li>
+                                <% }else{ %>
+                                    <li><a href="/bookedservices" class=""><i class="fas fa-user"></i> Profile</a></li>
+                                <% } %>
+                            <li><a href="/logout" class=""><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                        <% } %>
+                        
+                       
+                    </ul>
+                </div>
+            </div>
+        </nav><br><br><br>
+        <div class="container">
+            <% if(error && error.length > 0 ) { %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+            <% } %>
+            <% if(success && success.length > 0 ) { %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+            <% } %>
+            <% if(info && info.length > 0 ) { %>
+                <div class="alert alert-info" role="alert">
+                    <%= info %>
+                </div>
+            <% } %>
+        </div>
