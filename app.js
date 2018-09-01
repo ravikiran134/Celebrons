@@ -1417,7 +1417,8 @@ function escapeRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };
 
-app.listen("3000","localhost",function(){
-    console.log("localhost:3000 CLICK4SERVE SERVER STARTED");
-});
+// app.listen("3000","localhost",function(){
+//     console.log("localhost:3000 CLICK4SERVE SERVER STARTED");
+// });
+app.listen(process.env.PORT,process.env.IP);
 
